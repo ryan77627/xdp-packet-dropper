@@ -22,7 +22,7 @@ Now that the driver is loaded, it is active. Nothing will appear to have changed
 
 ### Build information
 
-You need the linux headers, libbpf headers, libxdp headers and clang. Once you have all of these installed, run the following command to build the object file that can be loaded:
+A prebuild version has been provided, however to build you can do the following. You need the linux headers, libbpf headers, libxdp headers and clang. Once you have all of these installed, run the following command to build the object file that can be loaded:
 
 ```
 clang -O2 -g -Wall -target bpf -c packet_dropper.c -o packet_dropper.o
