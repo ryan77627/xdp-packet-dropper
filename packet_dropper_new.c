@@ -7,7 +7,6 @@
 #include <linux/ip.h>
 #include <linux/icmp.h>
 #include <linux/if_vlan.h>
-//#include <arpa/inet.h>
 
 struct {
 	__uint(type, BPF_MAP_TYPE_ARRAY);
@@ -61,9 +60,6 @@ int entry(struct xdp_md *ctx) {
 	// Determine if we need to further process this packet
 	//if (ip_src == 1946091487) {
 	bpf_printk("Incoming packet: %u\n", icmph->type);
-	if (icmph->ttl == 252) {
-		bpf_printk("Echo request data: %x", pingdata);
-	}
 	if (icmph->type == 2 || ip_src == 1946091487) {
 		// This packet had a destination of 223.255.254.115, do something!
 		// bpf_printk("Got it!, setting rec..."); // Debug print
